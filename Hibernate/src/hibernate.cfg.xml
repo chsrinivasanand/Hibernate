@@ -22,7 +22,7 @@
         <property name="hibernate.connection.password">postgres</property>
         
         <!-- Connection URL - jdbc:postgresql://<Host>:<port>/<DB> -->
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernateTest</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/HibernateTest</property>
         
         <!-- JDBC connection pool -->
         <property name="connection.pool_size">1</property>
@@ -37,7 +37,7 @@
         <property name="hibernate.cache.use_second_level_cache">false</property>
         
         <!-- Name the annotated entity class here  -->
-        <mapping class="" />
+        <mapping class="org.practice.hibernate.dto.UserDetails" />
         
     </session-factory>
 </hibernate-configuration>
