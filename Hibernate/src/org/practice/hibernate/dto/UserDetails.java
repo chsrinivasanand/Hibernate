@@ -1,13 +1,17 @@
 package org.practice.hibernate.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity  // use this class as entity
+@Entity(name="USER_DETAILS")  // use this class as entity and name as table name
 public class UserDetails {
 
 	@Id  // primary Key
+	@Column (name = "USER_ID") // column name in the table. we can keep this annotation at getmethod level so that value will be picked from getmethod 
 	private int userId;
+	
+	@Column(name= "USER_NAME")
 	private String userName;
 	
 	public int getUserId() {
