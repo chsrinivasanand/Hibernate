@@ -26,7 +26,14 @@ public class HibernateTest {
 		session.beginTransaction();
 		session.save(user);
 		session.getTransaction().commit();
+		session.close();
 		
+		user = null ;
+		
+		session = sessionfactoy.openSession();
+		session.beginTransaction();
+		user = session.get(UserDetails.class, 1/* primary key value*/);
+		System.out.println("user name :"+user.getUserName());
 	}
 
 }
