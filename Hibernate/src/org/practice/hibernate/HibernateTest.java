@@ -1,5 +1,7 @@
 package org.practice.hibernate;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,6 +15,10 @@ public class HibernateTest {
 		
 		user.setUserId(1);
 		user.setUserName("First User");
+		user.setAddress("First User's address");
+		user.setJoinedDate(new Date());
+		user.setDescription("user description is here");
+		
 		
 		SessionFactory sessionfactoy= new Configuration().configure().buildSessionFactory();
 		Session session = sessionfactoy.openSession();
