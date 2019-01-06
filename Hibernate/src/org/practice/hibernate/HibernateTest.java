@@ -1,7 +1,5 @@
 package org.practice.hibernate;
 
-import java.util.Date;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,29 +9,32 @@ public class HibernateTest {
 
 	public static void main(String[] args) {
 		
-		UserDetails user = new UserDetails();
+		UserDetails user1 = new UserDetails();
+		UserDetails user2 = new UserDetails();
+ 		
+		user1.setUserName("First User");
+		user2.setUserName("second user");
 		
-		user.setUserId(1);
-		user.setUserName("First User");
-		user.setAddress("First User's address");
-		user.setJoinedDate(new Date());
-		user.setDescription("user description is here");
-		
-		
+		 		
 		SessionFactory sessionfactoy= new Configuration().configure().buildSessionFactory();
 		Session session = sessionfactoy.openSession();
 		
 		session.beginTransaction();
-		session.save(user);
+		session.save(user1);
+		session.save(user2);
 		session.getTransaction().commit();
 		session.close();
 		
-		user = null ;
+		user1 = null ;
 		
+		
+		// Retrieving data
 		session = sessionfactoy.openSession();
 		session.beginTransaction();
-		user = session.get(UserDetails.class, 1/* primary key value*/);
-		System.out.println("user name :"+user.getUserName());
+		user1 = session.get(UserDetails.class, 1/* primary key value*/);
+		System.out.println("user1 name :"+user1.getUserName());
+		user1 = session.get(UserDetails.class, 2/* primary key value*/);
+		System.out.println("user2 name :"+user1.getUserName());
 	}
 
 }
