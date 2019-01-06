@@ -1,5 +1,8 @@
 package org.practice.hibernate.dto;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +18,18 @@ public class UserDetails {
 	private int userId;
 	
 	private String userName;
-	//@Embedded   this annotation is required if @embeddable anotation is not present at class level 
-	private Address address;
+	@Embedded   //this annotation is required if @embeddable anotation is not present at class level 
+	@AttributeOverrides(
+	{
+		@AttributeOverride(name="street",column=@Column(name="HOME_STREET_NAME")),
+		@AttributeOverride(name="city",column=@Column(name="HOME_CITY_NAME")),
+		@AttributeOverride(name="state",column=@Column(name="HOME_STATE_NAME")),
+		@AttributeOverride(name="pincode",column=@Column(name="HOME_PINCODE"))
+	}
+			)
+	private Address homeAddress;
+	@Embedded
+	private Address officeAddress;
 		
 	public int getUserId() {
 		return userId;
@@ -30,11 +43,18 @@ public class UserDetails {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Address getAddress() {
-		return address;
+	
+	public Address getHomeAddress() {
+		return homeAddress;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
+	}
+	public Address getOfficeAddress() {
+		return officeAddress;
+	}
+	public void setOfficeAddress(Address officeAddress) {
+		this.officeAddress = officeAddress;
 	}
 	
 	
