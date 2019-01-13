@@ -1,5 +1,7 @@
 package org.practice.hibernate;
 
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -27,9 +29,8 @@ public class HibernateTest {
 		
  		
 		user1.setUserName("First User");
-		user1.setHomeAddress(homeAddress);
-		user1.setOfficeAddress(officeAddress);
-		
+		user1.getListOfAddress().add(homeAddress);
+		user1.getListOfAddress().add(officeAddress);
 		 		
 		SessionFactory sessionfactoy= new Configuration().configure().buildSessionFactory();
 		Session session = sessionfactoy.openSession();
@@ -40,7 +41,7 @@ public class HibernateTest {
 		session.close();
 		
 		user1 = null ;
-		
+		 
 		
 		// Retrieving data
 		session = sessionfactoy.openSession();
