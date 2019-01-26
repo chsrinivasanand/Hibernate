@@ -47,6 +47,7 @@ public class HibernateTest {
 		user1 = session.get(UserDetails.class, 1/* primary key value*/);
 		System.out.println("user1 name :"+user1.getUserName());
 		System.out.println("testing");
+		session.close();
 		System.out.println("user1 address size:"+user1.getListOfAddress().size());
 		
 	}

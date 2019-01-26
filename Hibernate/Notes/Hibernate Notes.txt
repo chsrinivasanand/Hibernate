@@ -40,3 +40,19 @@ In hibernate two type of objects will be required
 
 
 @EmbeddedID -- used for primary key value object
+
+
+
+
+
+Lazy Initialization
+    If you have object and inside you have list of objects. Whenever you call get method of list , then only corresponding sql query executed and result will be shown
+this is achieved in hibenate by using proxy class
+    required_class <--- Proxy_Required_class  <--- DB 
+
+
+
+eager Initialization 
+    opposite to lazy initialization. to achieve this need additional configuration
+
+
