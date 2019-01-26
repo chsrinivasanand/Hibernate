@@ -1,0 +1,42 @@
+
+
+Session factory:
+	one object for application
+	create sessions from session factory
+	Use sessions to save model objects
+	
+Annotations:
+@Basic
+@Transient
+@Temporal
+@Lob
+
+
+
+
+@GeneratedValue 
+Strategy  
+GenerationType.Auto by-default hibernate will decide
+GenerationType.Identity depends on DB provider
+GenerationType.sequence  
+GenerationType.table separate table to get the primary key
+
+
+
+In hibernate two type of objects will be required 
+1.Entity   - independent and provide meaning to data 
+2.value object   -  does not have meaning as of itself, part of entity
+     @Embeddable -- annotation will tell hibernate to not create separate table
+
+	 
+@AttributeOverride(name = "variable_name",
+					column=@Column(name="new column name")					
+@AttributeOverrides(
+{
+	@AttributeOverride,
+	@AttributeOverridel,
+	@AttributeOverride
+})
+
+
+@EmbeddedID -- used for primary key value object
