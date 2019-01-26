@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +22,10 @@ public class UserDetails {
 	private String userName;
 	
 	@ElementCollection  // used to tell hibernate that below attribute should be treat it as list
-	private Set<Address> listOfAddress = new HashSet(); 
+	@JoinTable (name="USER_ADDRESS",//  Used to specify sub table name. if we didn't give this annotation hibernate will give automatic name
+	   joinColumns=@JoinColumn(name = "USER_ID")  //used to specify join column name of sub table
+	)   
+ 	private Set<Address> listOfAddress = new HashSet(); 
 			
 	public int getUserId() {
 		return userId;
